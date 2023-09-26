@@ -4,7 +4,97 @@
 
 #include <stdio.h>
 
-int main()
+int add(int a, int b) {
+	return a + b;
+}
+
+int multiply(int a, int b) {
+	return a * b;
+}
+
+int main() {
+	int result;
+
+	// 声明函数指针变量并初始化为指向add函数的指针
+	int (*ptr)(int, int) = add;
+
+	// 通过函数指针调用add函数
+	result = ptr(3, 4);
+	printf("Addition result: %d\n", result);
+
+	// 重新指向multiply函数
+	ptr = multiply;
+
+	// 通过函数指针调用multiply函数
+	result = ptr(3, 4);
+	printf("Multiplication result: %d\n", result);
+
+	return 0;
+}
+
+#include <stdio.h>
+void test()
+{
+	printf("hehe\n");
+}
+int main13()
+{
+	printf("%p\n", test);
+	printf("%p\n", &test);
+	return 0;
+}
+
+int main12()
+{
+	char str1[] = "hello bit.";
+	char str2[] = "hello bit.";
+	const char* str3 = "hello bit.";
+	const char* str4 = "hello bit.";
+	if (str1 == str2)
+		printf("str1 and str2 are same\n");
+	else
+		printf("str1 and str2 are not same\n");
+
+
+	if (str3 == str4)
+		printf("str3 and str4 are same\n");
+	else
+		printf("str3 and str4 are not same\n");
+
+	return 0;
+}
+
+int main11()
+{
+	const char* pstr = "hello bit.";//这里是把一个字符串放到pstr指针变量里了吗？
+	printf("%s\n", pstr);
+	return 0;
+}
+
+int main9() {
+	char str[] = "Hello, World!"; // 字符数组，存储了字符串
+	char* ptr = str; // 字符指针，指向字符数组的首地址
+
+	printf("String: %s\n", ptr); // 通过字符指针输出字符串
+
+	while (*ptr != '\0') { // 循环遍历字符数组中的每个字符，直到遇到结束符 '\0'
+		printf("Character: %c\n", *ptr); // 输出当前字符
+		ptr++; // 指针移动到下一个字符
+	}
+
+	return 0;
+}
+
+int main8()
+{
+	char ch = 'w';
+	char* pc = &ch;
+	*pc = 'w';
+	return 0;
+}
+
+
+int main7()
 {
 	int arr[10] = { 1,2,3,4,5,6,7,8,9,0 };
 	int* p = arr;//p存放的是数组首元素的地址
